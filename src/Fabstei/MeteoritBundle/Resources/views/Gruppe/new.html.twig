@@ -1,0 +1,26 @@
+{% extends '::backend.html.twig' %}
+{% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+        
+        <h1>Gruppe creation</h1>
+
+        <form action="{{ path('gruppe_create') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <p>
+                <button type="submit">Create</button>
+            </p>
+        </form>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('gruppe') }}">
+                    Back to the list
+                </a>
+            </li>
+        </ul>
+
+        
+     </div>
+</div>
+{% endblock %}

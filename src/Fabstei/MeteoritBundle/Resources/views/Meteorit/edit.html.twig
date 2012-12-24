@@ -1,0 +1,68 @@
+{% extends '::backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{{ path('meteorit_show', { 'id': entity.id }) }}">{% if entity.name %}{{ entity.name }}{% else %}{{ entity.identifikation }}{% endif %}</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        Home
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+
+        <h1>Meteorit edit</h1>
+
+        <form action="{{ path('meteorit_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+            <input type="hidden" name="_method" value="PUT" />
+            
+            <ul class="nav nav-tabs" data-tabs="tabs" id="myTab">
+                <li class="active"><a  data-toggle="tab" href="#name" data-translation-locale="name">Name</a></li>
+                <li><a  data-toggle="tab" href="#ort" data-translation-locale="ort">Ort</a></li>
+                <li><a  data-toggle="tab" href="#typ" data-translation-locale="typ">Typ</a></li>
+                <li><a  data-toggle="tab" href="#other" data-translation-locale="other">Anderes</a></li>
+            </ul>
+
+            <div class="tab-content">
+                    <div class="tab-pane active" id="name">
+                        {{ form_row(edit_form.identifikation) }}
+                        {{ form_row(edit_form.name) }}
+                    </div>
+                    <div class="tab-pane" id="ort">
+                        {{ form_row(edit_form.ort) }}
+                        {{ form_row(edit_form.latitude) }}
+                        {{ form_row(edit_form.longitude) }}
+                        {{ form_row(edit_form.gewicht) }}
+                        {{ form_row(edit_form.bandbreite) }}
+
+                    </div>
+                    <div class="tab-pane" id="typ">
+                        {{ form_row(edit_form.typ) }}
+                        {{ form_row(edit_form.klasse) }}
+                        {{ form_row(edit_form.gruppe) }}
+                        {{ form_row(edit_form.petrtyp) }}
+                        {{ form_row(edit_form.strukturtyp) }}
+                        {{ form_row(edit_form.longitude) }}
+                    </div>
+                    <div class="tab-pane" id="other">
+                        {{ form_row(edit_form.anmerkung) }}
+                        {{ form_row(edit_form.fall) }}
+                        {{ form_row(edit_form.beschreibung) }}
+                        {{ form_row(edit_form.zusammensetzung) }}
+                        {{ form_row(edit_form.altersbestimmung) }}
+                    </div>
+            </div>
+            
+            {{ form_widget(edit_form) }}
+                <button type="submit" class="btn btn-success">Speichern</button>
+                <a href="{{ path('meteorit_show', { 'id': entity.id }) }}" class="btn">Abbrechen</a>
+        </form>
+  
+   </div>
+</div>
+{% endblock %}

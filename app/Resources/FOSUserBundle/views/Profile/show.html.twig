@@ -1,0 +1,5 @@
+{% extends '::backend.html.twig' %}
+{% block headline %}{% trans %}ruktu.fos.profile.heading{% endtrans %}{% endblock %}
+{% block content %}
+    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends '::backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        {% if entity.name %}{{ entity.name }}{% else %}{{ entity.identifikation }}{% endif %}
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+
+        <h1>{% if entity.name %}{{ entity.name }}{% else %}Meteorit{% endif %} <small>(Identifikation: {{ entity.identifikation }})</small></h1>
+
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>{% if entity.name %}{{ entity.name }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Ort</th>
+                    <td>{% if entity.ort %}{{ entity.ort }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{% if entity.latitude %}{{ entity.latitude }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{% if entity.longitude %}{{ entity.longitude }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Gewicht</th>
+                    <td>{% if entity.gewicht %}{% if entity.gewicht < 12 %}{{ entity.gewicht | number_format_spellout | capitalize }}{% else %}{{ entity.gewicht }}{% endif %} Gramm{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Anmerkung</th>
+                    <td>{% if entity.anmerkung %}{{ entity.anmerkung }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Fall</th>
+                    <td>{% if entity.fall %}{{ entity.fall | format_datetime('d. MMM. Y, hh:mm', app.request.locale, 'Europe/Zurich') }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Beschreibung</th>
+                    <td>{% if entity.beschreibung %}{{ entity.beschreibung }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Zusammensetzung</th>
+                    <td>{% if entity.zusammensetzung %}{{ entity.zusammensetzung }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Altersbestimmung</th>
+                    <td>{% if entity.altersbestimmung %}{{ entity.altersbestimmung }}{% else %}<span class="muted">Unbekannt</span>{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        {% if is_granted('ROLE_ADMIN') %}
+            <form action="{{ path('meteorit_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <a href="{{ path('meteorit_edit', { 'id': entity.id }) }}" class="btn btn-info">Ändern</a>
+                <button type="submit" class="btn btn-danger">Löschen</button>
+            </form>
+        {% endif %}
+        <p><a href="{{ path('home') }}" class="btn">Zurück zur Liste</a></p>
+    </div>
+</div>
+{% endblock %}

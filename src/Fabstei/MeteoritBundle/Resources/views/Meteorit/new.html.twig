@@ -1,0 +1,67 @@
+{% extends '::backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        Neuer Meteorit
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+
+        <h1>Meteorit creation</h1>
+        <form action="{{ path('meteorit_create') }}" method="post" {{ form_enctype(form) }}>
+            
+        <ul class="nav nav-tabs" data-tabs="tabs" id="myTab">
+            <li class="active"><a  data-toggle="tab" href="#name" data-translation-locale="name">Name</a></li>
+            <li><a  data-toggle="tab" href="#ort" data-translation-locale="ort">Ort</a></li>
+            <li><a  data-toggle="tab" href="#typ" data-translation-locale="typ">Typ</a></li>
+            <li><a  data-toggle="tab" href="#other" data-translation-locale="other">Anderes</a></li>
+        </ul>
+
+        <div class="tab-content">
+                <div class="tab-pane active" id="name">
+                    {{ form_row(form.identifikation) }}
+                    {{ form_row(form.name) }}
+                </div>
+                <div class="tab-pane" id="ort">
+                    {{ form_row(form.ort) }}
+                    {{ form_row(form.latitude) }}
+                    {{ form_row(form.longitude) }}
+                    {{ form_row(form.gewicht) }}
+                    {{ form_row(form.bandbreite) }}
+
+                </div>
+                <div class="tab-pane" id="typ">
+                    {{ form_row(form.typ) }}
+                    {{ form_row(form.klasse) }}
+                    {{ form_row(form.gruppe) }}
+                    {{ form_row(form.petrtyp) }}
+                    {{ form_row(form.strukturtyp) }}
+                    {{ form_row(form.longitude) }}
+                </div>
+                <div class="tab-pane" id="other">
+                    {{ form_row(form.anmerkung) }}
+                    {{ form_row(form.fall) }}
+                    {{ form_row(form.beschreibung) }}
+                    {{ form_row(form.zusammensetzung) }}
+                    {{ form_row(form.altersbestimmung) }}
+                </div>
+        </div>
+            
+            {{ form_widget(form) }}
+            <p>
+                <button type="submit" class="btn btn-success">Speichern</button>
+                <a href="{{ path('home') }}" class="btn">Zurück zur Liste</a>
+            </p>
+        </form>
+     </div>
+     <div class="span9 offset 2">
+
+     </div>
+</div>
+{% endblock %}

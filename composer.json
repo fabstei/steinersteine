@@ -1,0 +1,68 @@
+{
+    "name": "fabstei/steinersteine",
+    "description": "The \"Steinersteine\" website",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "dev-master",
+        "symfony/assetic-bundle": "dev-master",
+        "symfony/swiftmailer-bundle": "dev-master",
+        "symfony/monolog-bundle": "dev-master",
+
+        "twig/extensions": "dev-master",
+
+        "doctrine/orm": "dev-master",
+        "doctrine/doctrine-bundle": "dev-master",
+        "doctrine/data-fixtures": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        
+        "stof/doctrine-extensions-bundle": "dev-master",
+        
+        "gedmo/doctrine-extensions": "dev-master",
+                
+        "sensio/framework-extra-bundle": "dev-master",
+        "sensio/generator-bundle": "dev-master",
+        
+        "jms/security-extra-bundle": "dev-master",
+        "jms/serializer-bundle": "dev-master",
+        "jms/translation-bundle": "dev-master",
+        "jms/di-extra-bundle": "dev-master",
+        
+        "kriswallsmith/assetic": "dev-master",
+        
+        "twitter/bootstrap": "v2.2.1",
+        "leafo/lessphp": "dev-master",
+        
+        "avalanche123/imagine-bundle": "dev-master",
+        
+        "knplabs/knp-menu-bundle": "dev-master",
+
+        "sonata-project/intl-bundle": "dev-master",
+
+        "friendsofsymfony/user-bundle": "dev-master"
+        
+    },
+    
+    "repositories": [
+                {
+                    "type": "package",
+                    "package": {
+                                "name": "twitter/bootstrap",
+                                "version": "2.2.1",
+                                "source": {
+                                            "type": "git",
+                                            "url": "https://github.com/twitter/bootstrap",
+                                            "reference": "v2.2.1"
+                                }
+                    }
+            }
+        ],
+
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web"
+    }
+}

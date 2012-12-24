@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{app.request.locale}}">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>{% block title %}Steiner Steine{% endblock %}</title>
+    <meta name="description" content="Steiner Steine.ch - die beste Idee seit Eis am Stil!">
+    <meta name="author" content="Fabian Steiner">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{%- block head_style -%}
+  {% stylesheets output="css/frontend.css"
+    '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
+    'https://raw.github.com/eternicode/bootstrap-datepicker/master/css/datepicker.css'
+    '@FabsteiMeteoritBundle/Resources/public/css/*'
+  %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+  {% endstylesheets %}
+{%- endblock head_style -%}
+
+{%- block head_script -%}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script src="https://raw.github.com/eternicode/bootstrap-datepicker/master/js/bootstrap-datepicker.js"></script>
+{%- endblock head_script -%}
+
+</head>
+<body>
+  {% block body %}
+    <div class="content">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="http://steinersteine.dev">Steinersteine.ch</a>
+                    {{ knp_menu_render('dropdownMenu', {'nav_type': 'navbar', 'pull': 'right'}) }}
+                </div>
+            </div>
+            {% block navbar %}
+                <ul class="breadcrumb">
+                {% block breadcrumb %}
+                <li>
+                    <a href="http://steinersteine.dev">Home</a> <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Unknown
+                </li>
+                {% endblock %}
+                </ul>
+            {% endblock %}
+        </div>
+        <div class="container-fluid" id="content">
+        {% include '::flash.html.twig' %}
+        {% block page %}
+        {% endblock page %}
+        </div>
+    </div>        
+        
+  {% endblock body %}
+</body>
+</html>
