@@ -1,5 +1,21 @@
 {% extends '::backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        Email Prüfung
+    </li>
+{% endblock %}
+
 {% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+    
 
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
-{% endblock content %}
+
+   </div>
+</div>
+{% endblock %}

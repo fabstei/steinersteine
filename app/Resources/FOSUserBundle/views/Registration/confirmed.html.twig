@@ -1,8 +1,25 @@
 {% extends '::backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        Registrierungsbestätigung
+    </li>
+{% endblock %}
+
 {% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+    
+
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
     {% endif %}
-{% endblock content %}
+
+   </div>
+</div>
+{% endblock %}

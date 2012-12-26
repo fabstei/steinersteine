@@ -1,5 +1,22 @@
 {% extends '::backend.html.twig' %}
 {% block headline %}{% trans %}ruktu.fos.profile.heading{% endtrans %}{% endblock %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        Profil
+    </li>
+{% endblock %}
+
 {% block content %}
+<div class="row-fluid">
+    <div class="span9 offset2">
+    
+
     {% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock content %}
+
+   </div>
+</div>
+{% endblock %}
