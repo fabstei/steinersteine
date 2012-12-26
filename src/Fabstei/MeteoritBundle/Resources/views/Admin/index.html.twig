@@ -1,0 +1,82 @@
+{% extends '::backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ path('home') }}">Home</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        Administration
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span9 offset1">
+        <h2>Administration</h2>
+        
+        <div class="row-fluid">
+            <div class="span3 well">
+                <h4>Bandbreiten</h4>
+                {% if bandbreite %}<ul>{% endif %}
+                {% for entity in bandbreite %}
+                    <li><a href="{{ path('bandbreite_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+                {% else %}
+                    <p>Leider noch nichts eingetragen.</p>
+                {% endfor %}
+                {% if bandbreite %}</ul>{% endif %}
+            </div>
+            <div class="span3 well">
+                <h4>Gruppen</h4>
+                {% if gruppe %}<ul>{% endif %}
+                {% for entity in gruppe %}
+                    <li><a href="{{ path('gruppe_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+                {% else %}
+                    <p>Leider noch nichts eingetragen.</p>
+                {% endfor %}
+                {% if gruppe %}</ul>{% endif %}
+            </div>
+            <div class="span3 well">
+                <h4>Klassen</h4>
+                {% if klasse %}<ul>{% endif %}
+                {% for entity in klasse %}
+                    <li><a href="{{ path('klasse_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+                {% else %}
+                    <p>Leider noch nichts eingetragen.</p>
+                {% endfor %}
+                {% if klasse %}</ul>{% endif %}
+            </div>
+            <div class="span3 well">
+                <h4>Petrtypen</h4>
+                {% if petrtyp %}<ul>{% endif %}
+                {% for entity in petrtyp %}
+                    <li><a href="{{ path('petrytp_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+                {% else %}
+                    <p>Leider noch nichts eingetragen.</p>
+                {% endfor %}
+                {% if petrtyp %}</ul>{% endif %}
+            </div>
+            <div class="span3 well">
+                <h4>Strukturtypen</h4>
+                {% if strukturtyp %}<ul>{% endif %}
+                {% for entity in strukturtyp %}
+                    <li><a href="{{ path('strukturtyp_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+                {% else %}
+                    <p>Leider noch nichts eingetragen.</p>
+                {% endfor %}
+                {% if strukturtyp %}</ul>{% endif %}
+            </div>
+            <div class="span3 well">
+                <h4>Typen</h4>
+                {% if typ %}<ul>{% endif %}
+                {% for entity in typ %}
+                    <li><a href="{{ path('typ_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+                {% else %}
+                    <p>Leider noch nichts eingetragen.</p>
+                {% endfor %}
+                {% if typ %}</ul>{% endif %}
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
