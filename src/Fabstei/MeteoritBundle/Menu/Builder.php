@@ -43,19 +43,22 @@ class Builder
     {
 
         $menu = $this->factory->createItem('root');
-        //  $menu->setAttribute('class', 'nav navbar-text pull-right');
-
+        
         if ($this->isLoggedIn) {
-            $dropdown = $menu->addChild($this->user->getUsername());
-            $dropdown->addChild('Profil', array('route' => 'fos_user_profile_show'));
-            $dropdown->addChild('Passwort ändern', array('route' => 'fos_user_change_password'));
-            $dropdown->addChild('d1', array('attributes' => array('divider' => true)));
-            $dropdown->addChild('Logout', array('route'=>'fos_user_security_logout'));
+            $menu->addChild('Administration', array('route' => 'admin_home'));
+        }        
+        
+        if ($this->isLoggedIn) {
+            $loginDropdown = $menu->addChild($this->user->getUsername());
+            $loginDropdown->addChild('Profil', array('route' => 'fos_user_profile_show'));
+            $loginDropdown->addChild('Passwort ändern', array('route' => 'fos_user_change_password'));
+            $loginDropdown->addChild('d1', array('attributes' => array('divider' => true)));
+            $loginDropdown->addChild('Logout', array('route'=>'fos_user_security_logout'));
 
         } else {
             $menu->addChild('Login', array('route' => 'fos_user_security_login'));
         }
-
+        
         return $menu;
     }
 
